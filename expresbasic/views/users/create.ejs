@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Laporan</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Create New Laporan</h1>
+        <form action="/users/laporan" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="judul">Judul:</label>
+                <input type="text" class="form-control" id="judul" name="judul" required>
+            </div>
+            <div class="form-group">
+                <label for="detail">Detail:</label>
+                <textarea class="form-control" id="detail" name="detail" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="gambar">Gambar:</label>
+                <input type="file" class="form-control-file" id="gambar" name="gambar" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

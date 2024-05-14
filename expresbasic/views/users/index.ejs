@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            height: 100vh;
+            background-image: url('https://png.pngtree.com/background/20221227/original/pngtree-business-background-blue-simple-picture-image_1990760.jpg');
+        }
+    </style>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">User Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/create">buat</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">admin</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <br><br><br><br>
+
+    <div class="container">
+        <%- include('../partials/_message.ejs') %>
+        <div class="row">
+            <div class="col">
+                <h1>Hello: <%= nama %> </h1>
+                <br><br>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Judul</th>
+                            <th scope="col">Detail</th>
+                            <th scope="col">Gambar</th>
+                            <th scope="col">Tanggal</th>
+                            <th scope="col">Waktu</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% laporan.forEach(function(laporan) { %>
+                            <tr>
+                                <td><%= laporan.judul %></td>
+                                <td><%= laporan.detail %></td>
+                                <td><img src="/images/upload/<%= laporan.gambar %>" alt="Gambar" style="max-width: 100px;"></td>
+                                <td><%= laporan.tanggal %></td>
+                                <td><%= laporan.jam %></td>
+                                <td>
+                                    <a href="/users/laporan/edit/<%= laporan.id %>" class="btn btn-primary">Edit</a>
+                                    <form action="/users/laporan/delete/<%= laporan.id %>" method="GET" style="display: inline;">
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
